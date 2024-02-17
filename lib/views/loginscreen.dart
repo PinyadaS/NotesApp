@@ -11,44 +11,33 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final LoginController logincontroller = LoginController();
-  final formKey = GlobalKey<FormState>();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final LoginController logincontroller = LoginController();
-    final formKey = GlobalKey<FormState>();
     return Scaffold(
-      body: Form(
-        key: formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Text("Log In"),
-              TextFormField(
-                decoration: InputDecoration(labelText: "Username"),
-                validator: (value) => logincontroller.validateUsername(value),
-                onChanged: (newValue) => logincontroller.updateUsername(newValue),
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: "Password"),
-                validator: (value) => logincontroller.validatePassword(value),
-                onChanged: (newValue) => logincontroller.updatePassword(newValue),
-              ),
-              InkWell(
-                  child: Container(child: Text("Log In")),
-                  onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      logincontroller.login();
-                    }
-                  }),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Text("Log In"),
+            TextField(
+              decoration: InputDecoration(labelText: "Username"),
+              controller: usernameController,
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: "Password"),
+              controller: passwordController,
+            ),
+            InkWell(
+                child: Container(child: Text("Log In")),
+                onTap: () {
+                  print(usernameController.text);
+                  print(passwordController.text);
+                  logincontroller.login(usernameController.text, passwordController.text,context);
+                }),
+          ],
         ),
       ),
     );
