@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/assets/colour.dart';
 import 'package:notes_app/assets/text_styles.dart';
 import 'package:notes_app/assets/utility.dart';
-import 'package:notes_app/views/loginscreen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,13 +21,11 @@ class HomeScreen extends StatelessWidget {
           Text("Description"),
           InkWell(
             child: Container(child: Text("Log In")),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => LoginScreen()),
-            ),
+            onTap: () => Navigator.pushNamed(context, '/login')
           ),
           InkWell(
             child: Container(child: Text("Sign Up")),
+            onTap:() => Navigator.pushNamed(context, '/register'),
           )
         ]),
       ),
