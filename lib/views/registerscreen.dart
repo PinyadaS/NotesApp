@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:notes_app/controllers/registercontroller.dart';
+import 'package:notes_app/models/registerRequestModel.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -8,12 +11,27 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  // final RegisterController registercontroller = RegisterController();
+  final RegisterController registercontroller = RegisterController();
   final firstnameController = TextEditingController();
   final lastnameController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-  // final birthdayController = ;
+  final birthdayController = TextEditingController();
+
+  DateTime? selectedDate;
+  Future<void> selectdate(BuildContext buildContext) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        firstDate: DateTime(1950),
+        lastDate: DateTime.now(),
+        helpText: "Select your birthday.");
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        birthdayController.text = DateFormat('yyyy-MM-dd').format(picked);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +56,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
           controller: passwordController,
         ),
         TextField(
+          controller: birthdayController,
+          readOnly: true,
           decoration: InputDecoration(labelText: "Birthday"),
-          // controller: birthdayController,
+          onTap: () => selectdate(context),
         ),
         InkWell(
-            child: Container(child: Text("Log In")),
+            child: Container(child: Text("Sign Up")),
             onTap: () {
-
+              registercontroller.register(
+                  context,
+                  RegisterRequestModel(
+                      firstname: firstnameController.text,
+                      lastname: lastnameController.text,
+                      username: usernameController.text,
+                      password: passwordController.text,
+                      birthday: birthdayController.text));
             }),
       ],
     ));
