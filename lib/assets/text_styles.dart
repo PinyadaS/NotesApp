@@ -13,4 +13,31 @@ class TextStyles {
       ),
     );
   }
+  static TextStyle style2() {
+    return GoogleFonts.sacramento(
+      textStyle: TextStyle(
+        fontSize: 40,
+        fontWeight: FontWeight.bold,
+        color: Utility.getColorFromHex(Colour.aegean),
+      ),
+    );
+  }
+  static TextStyle style3() {
+    return GoogleFonts.sacramento(
+      textStyle: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+        color: Utility.getColorFromHex(Colour.daisy),
+      ),
+    );
+  }
+  static TextStyle style4() {
+    return GoogleFonts.sacramento(
+      textStyle: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+        color: Utility.getColorFromHex(Colour.aegean),
+      ),
+    );
+  }
 }

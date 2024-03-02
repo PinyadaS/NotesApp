@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/assets/colour.dart';
+import 'package:notes_app/assets/text_styles.dart';
+import 'package:notes_app/assets/utility.dart';
 import 'package:notes_app/controllers/logincontroller.dart';
 import 'package:notes_app/views/mainscreen.dart';
 
@@ -21,7 +24,10 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Text("Log In"),
+            Text(
+              "Log In",
+              style: TextStyles.style2(),
+            ),
             TextField(
               decoration: InputDecoration(labelText: "Username"),
               controller: usernameController,
@@ -30,13 +36,23 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration(labelText: "Password"),
               controller: passwordController,
             ),
+            SizedBox(height: 30,),
             InkWell(
-                child: Container(child: Text("Log In")),
-                onTap: () {
-                  print(usernameController.text);
-                  print(passwordController.text);
-                  logincontroller.login(usernameController.text, passwordController.text,context);
-                }),
+              child: Container(
+                child: Text(
+                  "Log In",
+                  style: TextStyles.style3(),
+                ),
+                padding: EdgeInsets.only(left:20, top:5, right:20, bottom:5),
+                decoration: BoxDecoration(color: Utility.getColorFromHex(Colour.aegean), borderRadius: BorderRadius.circular(14)),
+              ),
+              onTap: () {
+                print(usernameController.text);
+                print(passwordController.text);
+                logincontroller.login(
+                    usernameController.text, passwordController.text, context);
+              },
+            ),
           ],
         ),
       ),

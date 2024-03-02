@@ -18,14 +18,33 @@ class HomeScreen extends StatelessWidget {
             "Notes App",
             style: TextStyles.style1(),
           )),
-          Text("Description"),
+          Center(
+              child: Image.asset('images/note.png',
+                  width: MediaQuery.of(context).size.width / 2,
+                  height: MediaQuery.of(context).size.height / 2)),
           InkWell(
-            child: Container(child: Text("Log In")),
-            onTap: () => Navigator.pushNamed(context, '/login')
+              child: Center(
+                child: Container(
+                  child: Text(
+                    "Log In",
+                    style: TextStyles.style3(),
+                  ),
+                  padding: EdgeInsets.only(left:20, top:5, right:20, bottom:5),
+                  decoration: BoxDecoration(color: Utility.getColorFromHex(Colour.aegean), borderRadius: BorderRadius.circular(14)),
+                ),
+              ),
+              onTap: () => Navigator.pushNamed(context, '/login')),
+          SizedBox(
+            height: 30,
           ),
           InkWell(
-            child: Container(child: Text("Sign Up")),
-            onTap:() => Navigator.pushNamed(context, '/register'),
+            child: Center(
+                child: Container(
+                    child: Text(
+              "Sign Up",
+              style: TextStyles.style4(),
+            ))),
+            onTap: () => Navigator.pushNamed(context, '/register'),
           )
         ]),
       ),

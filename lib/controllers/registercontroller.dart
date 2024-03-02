@@ -9,9 +9,7 @@ class RegisterController {
     try {
       final data = await userService.register(requestdata);
       print(data);
-      if (Navigator.canPop(context)) {
-        Navigator.popAndPushNamed(context, '/main');
-      }
+      Navigator.pushNamed(context, '/main');
     } catch (e) {
       print(e);
     }

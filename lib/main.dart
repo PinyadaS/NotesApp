@@ -7,6 +7,7 @@ import 'package:notes_app/views/registerscreen.dart';
 void main() {
   runApp(const MyApp());
 }
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomeScreen(),
+      navigatorKey: navigatorKey,
       routes: {
         '/login': (context) => LoginScreen(),
         '/main':(context) => MainScreen(),

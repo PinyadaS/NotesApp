@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:notes_app/assets/constant.dart';
 import 'package:notes_app/models/registerRequestModel.dart';
+import 'package:notes_app/models/userResponse.dart';
 
 class UserService {
   Future<Map<String, dynamic>> authenticate(
@@ -32,8 +33,7 @@ class UserService {
       },
       body: registerRequestModelToJson(data),
     );
-    print(response.body);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       return json.decode(response.body);
     } else {
       throw Exception("Failed to sign up.");
