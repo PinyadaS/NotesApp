@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/views/createnotescreen.dart';
 import 'package:notes_app/views/homescreen.dart';
 import 'package:notes_app/views/loginscreen.dart';
 import 'package:notes_app/views/mainscreen.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/main':(context) => MainScreen(),
         '/register':(context) => RegisterScreen(),
+        '/createnote':(context) => CreateNoteScreen(),
       },
     );
   }
